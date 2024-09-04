@@ -1,5 +1,4 @@
 import time
-import random
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
@@ -17,16 +16,6 @@ driver = webdriver.Chrome(
     service=service,
     options=options,
 )
-
-
-# Simulate mouse movement
-def simulate_mouse_movement():
-    action = ActionChains(driver)
-    for _ in range(random.randint(3, 7)):
-        x_offset = random.randint(-100, 100)
-        y_offset = random.randint(-100, 100)
-        action.move_by_offset(x_offset, y_offset).perform()
-        time.sleep(random.uniform(0.5, 1.5))
 
 
 def solve_captcha():
@@ -51,8 +40,6 @@ def solve_captcha():
 # Open Walmart
 driver.get("https://walmart.com")
 solve_captcha()
-# Wait for 2 secs
-time.sleep(100000000)
 # Take a snapshot of the current screen and
 # save as `walmart.png` in the current directory
 driver.save_screenshot("solved_walmart.png")
